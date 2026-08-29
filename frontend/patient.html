@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Queue Management - Patient Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🏥 Hospital Queue Management System</h1>
+            <p>Patient Portal - Track Your Queue Position</p>
+        </header>
+
+        <nav class="nav-tabs">
+            <button class="tab-button active" onclick="showTab('register')">Register</button>
+            <button class="tab-button" onclick="showTab('track')">Track Queue</button>
+            <button class="tab-button" onclick="showTab('queue-display')">Queue Display</button>
+        </nav>
+
+        <!-- ============== REGISTRATION TAB ============== -->
+        <div id="register" class="tab-content active">
+            <div class="card">
+                <h2>Patient Registration</h2>
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="name">Full Name:</label>
+                        <input type="text" id="name" required placeholder="Enter your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" id="phone" required placeholder="Enter your phone number">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="department">Department:</label>
+                        <select id="department" required>
+                            <option value="">Select Department</option>
+                            <option value="Cardiology">Cardiology</option>
+                            <option value="Orthopedics">Orthopedics</option>
+                            <option value="General Medicine">General Medicine</option>
+                            <option value="Dermatology">Dermatology</option>
+                            <option value="Pediatrics">Pediatrics</option>
+                            <option value="ENT">ENT</option>
+                            <option value="Ophthalmology">Ophthalmology</option>
+                            <option value="Psychiatry">Psychiatry</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="appointment_time">Appointment Time:</label>
+                        <input type="time" id="appointment_time" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Register & Get Queue Number</button>
+                </form>
+
+                <div id="registrationMessage" class="message-box"></div>
+            </div>
+        </div>
+
+        <!-- ============== TRACK QUEUE TAB ============== -->
+        <div id="track" class="tab-content">
+            <div class="card">
+                <h2>Track Your Queue Position</h2>
+                
+                <div class="track-section">
+                    <div class="form-group">
+                        <label for="patientId">Enter Your Patient ID:</label>
+                        <input type="number" id="patientId" placeholder="e.g., 1, 2, 3...">
+                        <button class="btn btn-primary" onclick="trackQueue()">Track</button>
+                    </div>
+                </div>
+
+                <div id="queueInfo" class="queue-info hidden">
+                    <div class="info-card">
+                        <div class="info-item">
+                            <span class="label">Patient Name:</span>
+                            <span id="trackName" class="value">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Department:</span>
+                            <span id="trackDept" class="value">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Appointment Time:</span>
+                            <span id="trackTime" class="value">-</span>
+                        </div>
+                    </div>
+
+                    <div class="queue-status">
+                        <div class="status-box">
+                            <div class="queue-position">
+                                <span class="position-number" id="trackPosition">-</span>
+                                <span class="position-label">Queue Position</span>
+                            </div>
+                        </div>
+
+                        <div class="status-badge" id="trackStatus">-</div>
+                    </div>
+
+                    <div class="countdown">
+                        <p>Estimated wait time based on your position</p>
+                        <div class="wait-estimate" id="waitEstimate">-</div>
+                    </div>
+                </div>
+
+                <div id="trackMessage" class="message-box"></div>
+            </div>
+        </div>
+
+        <!-- ============== QUEUE DISPLAY TAB ============== -->
+        <div id="queue-display" class="tab-content">
+            <div class="card">
+                <h2>Current Queue Display</h2>
+                <button class="btn btn-secondary" onclick="refreshQueueDisplay()">🔄 Refresh Queue</button>
+
+                <div id="queueList" class="queue-list">
+                    <p class="loading">Loading queue...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Hospital Queue Management System</p>
+    </footer>
+
+    <script src="patient-script.js"></script>
+</body>
+</html>

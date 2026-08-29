@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Queue Management - Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="admin-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Admin Panel</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <button class="nav-button active" onclick="showAdminTab('dashboard')">📊 Dashboard</button>
+                <button class="nav-button" onclick="showAdminTab('queue-control')">👥 Queue Control</button>
+                <button class="nav-button" onclick="showAdminTab('all-patients')">📋 All Patients</button>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="admin-header">
+                <h1>🏥 Hospital Queue Management - Admin</h1>
+                <p>Manage patient queue and monitor system</p>
+            </header>
+
+            <!-- ============== DASHBOARD TAB ============== -->
+            <div id="dashboard" class="admin-tab active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">⏳</div>
+                        <div class="stat-content">
+                            <h3>Waiting</h3>
+                            <p class="stat-number" id="waitingCount">0</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">📢</div>
+                        <div class="stat-content">
+                            <h3>Called</h3>
+                            <p class="stat-number" id="calledCount">0</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-content">
+                            <h3>Served</h3>
+                            <p class="stat-number" id="servedCount">0</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">👤</div>
+                        <div class="stat-content">
+                            <h3>Total Patients</h3>
+                            <p class="stat-number" id="totalCount">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-content">
+                    <div class="card">
+                        <h2>Next Patient to Call</h2>
+                        <div id="nextPatientCard" class="next-patient-box">
+                            <p class="placeholder">No patients waiting...</p>
+                        </div>
+                        <button class="btn btn-large btn-primary" onclick="callNextPatient()" style="width: 100%; margin-top: 20px;">📢 Call Next Patient</button>
+                    </div>
+
+                    <div class="card">
+                        <h2>Current Queue Status</h2>
+                        <div id="currentQueueStatus" class="queue-status-display">
+                            <p class="placeholder">Loading...</p>
+                        </div>
+                        <button class="btn btn-secondary" onclick="loadDashboard()" style="width: 100%; margin-top: 20px;">🔄 Refresh Stats</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============== QUEUE CONTROL TAB ============== -->
+            <div id="queue-control" class="admin-tab">
+                <div class="card">
+                    <h2>Queue Control Panel</h2>
+
+                    <div class="control-section">
+                        <h3>Current Queue (Next 10 Patients)</h3>
+                        <table class="queue-table">
+                            <thead>
+                                <tr>
+                                    <th>Position</th>
+                                    <th>Patient Name</th>
+                                    <th>Department</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="queueControlTable">
+                                <tr>
+                                    <td colspan="5" class="placeholder">Loading queue...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <button class="btn btn-secondary" onclick="loadQueueControl()" style="margin-top: 20px;">🔄 Refresh Queue</button>
+                </div>
+            </div>
+
+            <!-- ============== ALL PATIENTS TAB ============== -->
+            <div id="all-patients" class="admin-tab">
+                <div class="card">
+                    <h2>All Registered Patients</h2>
+
+                    <table class="patients-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Department</th>
+                                <th>Queue Position</th>
+                                <th>Status</th>
+                                <th>Appointment Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="allPatientsTable">
+                            <tr>
+                                <td colspan="7" class="placeholder">Loading patients...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <button class="btn btn-secondary" onclick="loadAllPatients()" style="margin-top: 20px;">🔄 Refresh Patients</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="admin-script.js"></script>
+</body>
+</html>
