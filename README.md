@@ -87,13 +87,25 @@ API running on http://localhost:5000
 
 #### 3. Open the Frontend
 
-**For Patient Portal:**
-- Open `frontend/patient.html` in your web browser
-- Or navigate to: `file:///path/to/hospital_queue_system/frontend/patient.html`
+The backend server will automatically serve the frontend files. Open your browser and navigate to:
 
-**For Admin Dashboard:**
-- Open `frontend/admin.html` in your web browser
-- Or navigate to: `file:///path/to/hospital_queue_system/frontend/admin.html`
+**🏥 Patient Portal:**
+- [http://localhost:5000/patient](http://localhost:5000/patient)
+- Or visit the home page: [http://localhost:5000](http://localhost:5000)
+
+**🔧 Admin Dashboard:**
+- [http://localhost:5000/admin](http://localhost:5000/admin)
+
+---
+
+## 🔗 Quick Links (When Server is Running)
+
+| Interface | URL |
+|-----------|-----|
+| 🏥 **Patient Portal** | [http://localhost:5000/patient](http://localhost:5000/patient) |
+| 🔧 **Admin Dashboard** | [http://localhost:5000/admin](http://localhost:5000/admin) |
+| 🏠 **Home Page** | [http://localhost:5000](http://localhost:5000) |
+| 🔌 **API Health Check** | [http://localhost:5000/api/health](http://localhost:5000/api/health) |
 
 ---
 
